@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AgregarCita extends Component {
 
@@ -80,5 +81,9 @@ class AgregarCita extends Component {
     }
 }
 
+AgregarCita.propTypes={
+    crearCita:PropTypes.func.isRequired,
+    
+}
 export default AgregarCita;
 
