@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import AgregarCita from './AgregarCita';
+import ListaCitas from './ListaCitas';
+
 
 class App extends Component {
 
@@ -12,9 +14,21 @@ class App extends Component {
     // tomar una copia del state
     const citas={...this.state.citas};
     // agregarlo al state actual
-    citas[`citas${Date.now()}`]=citas;
+    citas[`citas${Date.now()}`]=infoCita;
     // set al state
 
+    this.setState({
+      citas
+    })
+ 
+  }
+
+  borrarCita=id=>{
+    // leeer el state
+    const citas={...this.state.citas}
+    // borrar del state
+    delete citas[id];
+    // actualizar el state
     this.setState({
       citas
     })
@@ -33,7 +47,10 @@ class App extends Component {
               />
             </div>
             <div className="col-md-6">
-            2
+            <ListaCitas 
+              citas={this.state.citas}
+              borrarCita={this.borrarCita}
+            />
             </div>
           </div>
       </div>
